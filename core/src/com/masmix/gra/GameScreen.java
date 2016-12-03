@@ -1,11 +1,9 @@
 package com.masmix.gra;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.masmix.gra.Character;
-import com.masmix.gra.Player;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 /*
  * Created by MasmiX on 24.11.2016.
@@ -21,11 +19,24 @@ public class GameScreen extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        textureAtlas = new TextureAtlas();
+        textureAtlas = new TextureAtlas("gra.pack");
 
-
-        character = new Character("MasmiX", 100);
-        player = new Player(character);
+        character = new Character("MasmiX");
+        player = new Player(character,
+                new TextureRegion(textureAtlas.findRegion("standDown")),
+                new TextureRegion(textureAtlas.findRegion("standLeft")),
+                new TextureRegion(textureAtlas.findRegion("standRight")),
+                new TextureRegion(textureAtlas.findRegion("standUp")),
+                new TextureRegion(textureAtlas.findRegion("walkDown")),
+                new TextureRegion(textureAtlas.findRegion("walkUp")),
+                new TextureRegion(textureAtlas.findRegion("walkLeft1")),
+                new TextureRegion(textureAtlas.findRegion("walkLeft2")),
+                new TextureRegion(textureAtlas.findRegion("walkLeft3")),
+                new TextureRegion(textureAtlas.findRegion("walkLeft4")),
+                new TextureRegion(textureAtlas.findRegion("walkRight1")),
+                new TextureRegion(textureAtlas.findRegion("walkRight2")),
+                new TextureRegion(textureAtlas.findRegion("walkRight3")),
+                new TextureRegion(textureAtlas.findRegion("walkRight4")));
 
     }
 

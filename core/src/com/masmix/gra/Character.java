@@ -16,16 +16,14 @@ public class Character {
     private TextureRegion textureRegion;
 
 
-    public Character(String name, int health, TextureRegion textureRegion) {
+    public Character(String name, int health) {
         this.name = name;
         this.health = health;
-        this.textureRegion = textureRegion;
     }
 
-    public Character(String name, TextureRegion textureRegion) {
+    public Character(String name) {
         this.name = name;
         this.health = 100;
-        this.textureRegion = textureRegion;
     }
 
     public String getName() {
