@@ -62,5 +62,6 @@ public class GameScreen extends ApplicationAdapter {
     @Override
     public void dispose () {
         batch.dispose();
+        textureAtlas.dispose();
     }
 }
