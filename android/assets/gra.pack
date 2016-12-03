@@ -1,0 +1,103 @@
+
+gra.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+standDown
+  rotate: false
+  xy: 1, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+standLeft
+  rotate: false
+  xy: 35, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+standRight
+  rotate: false
+  xy: 69, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+standUp
+  rotate: false
+  xy: 103, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkDown
+  rotate: false
+  xy: 137, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkLeft1
+  rotate: false
+  xy: 171, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkLeft2
+  rotate: false
+  xy: 205, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkLeft3
+  rotate: false
+  xy: 239, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkRight1
+  rotate: false
+  xy: 273, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkRight2
+  rotate: false
+  xy: 307, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkRight3
+  rotate: false
+  xy: 341, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkRight4
+  rotate: false
+  xy: 375, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkUp
+  rotate: false
+  xy: 409, 1
+  size: 32, 64
+  orig: 32, 64
+  offset: 0, 0
+  index: -1
+walkLeft4
+  rotate: false
+  xy: 443, 1
+  size: 16, 64
+  orig: 16, 64
+  offset: 0, 0
+  index: -1
