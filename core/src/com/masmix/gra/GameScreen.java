@@ -51,17 +51,15 @@ public class GameScreen extends ApplicationAdapter {
 
     private void updateScene() {
         float deltaTime = Gdx.graphics.getDeltaTime();
-        if (!player.getWalkRightAnim().isAnimationFinished(player.getWalkRightStateTime())) {
-            player.setWalkRightStateTime(player.getWalkRightStateTime() + deltaTime);
-            player.setPlayerPositionX(player.getPlayerPositionX() + 50 * deltaTime);
-
-            System.out.println(player.getWalkRightAnim().getKeyFrame(player.getWalkRightStateTime(), false));
+        if (!player.getWalkRightAnim().isAnimationFinished(player.getWalkRightAnimTime())) {
+            player.setWalkRightAnimTime(player.getWalkRightAnimTime() + deltaTime);
+            player.positionAdd(50 * deltaTime, 0);
         }
     }
 
     private void drawScene() {
         batch.begin();
-        batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightStateTime()), player.getPlayerPositionX(), player.getPlayerPositionY());
+        batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
 
 //        System.out.println("playerPos X: " + player.getPlayerPositionX());
         batch.end();

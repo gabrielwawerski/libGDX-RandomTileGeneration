@@ -30,12 +30,12 @@ public class Player {
     private Animation walkUpAnim;
     private Animation walkDownAnim;
 
-    private float walkLeftStateTime;
-    private float walkRightStateTime;
-    private float walkUpStateTime;
-    private float walkDownStateTime;
+    private float walkLeftAnimTime;
+    private float walkRightAnimTime;
+    private float walkUpAnimTime;
+    private float walkDownAnimTime;
 
-    private Vector2 playerPosition;
+    private Vector2 position;
 
 
     public Player(Character character, TextureRegion standDown,
@@ -46,6 +46,7 @@ public class Player {
                   TextureRegion walkLeft4, TextureRegion walkRight1,
                   TextureRegion walkRight2, TextureRegion walkRight3,
                   TextureRegion walkRight4) {
+        position = new Vector2();
         this.character = character;
         this.standDown = standDown;
         this.standLeft = standLeft;
@@ -74,12 +75,10 @@ public class Player {
         walkDownAnim = new Animation(1.0f, walkDown, standDown);
         walkDownAnim.setPlayMode(Animation.PlayMode.NORMAL);
 
-        playerPosition = new Vector2();
-
-        walkLeftStateTime = 0;
-        walkRightStateTime = 0;
-        walkUpStateTime = 0;
-        walkDownStateTime = 0;
+        walkLeftAnimTime = 0;
+        walkRightAnimTime = 0;
+        walkUpAnimTime = 0;
+        walkDownAnimTime = 0;
     }
 
     public Character getCharacter() {
@@ -118,60 +117,64 @@ public class Player {
         this.walkDownAnim = walkDownAnim;
     }
 
-    public float getWalkLeftStateTime() {
-        return walkLeftStateTime;
+    public float getWalkLeftAnimTime() {
+        return walkLeftAnimTime;
     }
 
-    public void setWalkLeftStateTime(float walkLeftStateTime) {
-        this.walkLeftStateTime = walkLeftStateTime;
+    public void setWalkLeftAnimTime(float walkLeftAnimTime) {
+        this.walkLeftAnimTime = walkLeftAnimTime;
     }
 
-    public float getWalkRightStateTime() {
-        return walkRightStateTime;
+    public float getWalkRightAnimTime() {
+        return walkRightAnimTime;
     }
 
-    public void setWalkRightStateTime(float walkRightStateTime) {
-        this.walkRightStateTime = walkRightStateTime;
+    public void setWalkRightAnimTime(float walkRightAnimTime) {
+        this.walkRightAnimTime = walkRightAnimTime;
     }
 
-    public float getWalkUpStateTime() {
-        return walkUpStateTime;
+    public float getWalkUpAnimTime() {
+        return walkUpAnimTime;
     }
 
-    public void setWalkUpStateTime(float walkUpStateTime) {
-        this.walkUpStateTime = walkUpStateTime;
+    public void setWalkUpAnimTime(float walkUpAnimTime) {
+        this.walkUpAnimTime = walkUpAnimTime;
     }
 
-    public float getWalkDownStateTime() {
-        return walkDownStateTime;
+    public float getWalkDownAnimTime() {
+        return walkDownAnimTime;
     }
 
-    public void setWalkDownStateTime(float walkDownStateTime) {
-        this.walkDownStateTime = walkDownStateTime;
+    public void setWalkDownAnimTime(float walkDownAnimTime) {
+        this.walkDownAnimTime = walkDownAnimTime;
     }
 
-    public Vector2 getPlayerPosition() {
-        return playerPosition;
+    public Vector2 getPosition() {
+        return position;
     }
 
-    public void setPlayerPosition(float playerPositionX, float playerPositionY) {
-        playerPosition.set(playerPositionX, playerPositionY);
+    public void setPosition(float positionX, float positionY) {
+        position.set(positionX, positionY);
     }
 
-    public float getPlayerPositionX() {
-        return  playerPosition.x;
+    public float getPositionX() {
+        return  position.x;
     }
 
-    public float getPlayerPositionY() {
-        return  playerPosition.y;
+    public float getPositionY() {
+        return  position.y;
     }
 
-    public void setPlayerPositionX(float playerPositionX) {
-        this.playerPosition.x = playerPositionX;
+    public void setPositionX(float positionX) {
+        this.position.x = positionX;
     }
 
-    public void setPlayerPositionY(float playerPositionY) {
-        this.playerPosition.y = playerPositionY;
+    public void setPositionY(float positionY) {
+        this.position.y = positionY;
+    }
+
+    public void positionAdd(float x, float y) {
+        position.add(x, y);
     }
 }
 
