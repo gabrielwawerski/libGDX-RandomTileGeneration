@@ -25,6 +25,11 @@ public class Character {
         this.name = name;
         this.health = 100;
     }
+    
+    public Character() {
+    			this.name = "Player"
+    			this.health = 100;
+    }
 
     public String getName() {
         return name;

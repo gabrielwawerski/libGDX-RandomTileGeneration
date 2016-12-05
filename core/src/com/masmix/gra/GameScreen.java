@@ -37,9 +37,8 @@ public class GameScreen extends ApplicationAdapter {
         viewport = new FitViewport(SCREEN_WIDTH, SCREEN_HEIGHT, camera);
         playerAtlas = new TextureAtlas("gra.pack");
         tilesAtlas = new TextureAtlas("tiles.pack");
-        character = new Character("MasmiX");
 
-        player = new Player(character,
+        player = new Player(new Character("MasmiX"),
                 new TextureRegion(playerAtlas.findRegion("standDown")), new TextureRegion(playerAtlas.findRegion("standLeft")),
                 new TextureRegion(playerAtlas.findRegion("standRight")), new TextureRegion(playerAtlas.findRegion("standUp")),
                 new TextureRegion(playerAtlas.findRegion("walkDown")), new TextureRegion(playerAtlas.findRegion("walkUp")),
