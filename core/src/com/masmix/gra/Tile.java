@@ -10,15 +10,15 @@ public class Tile {
     private int posY;
     private static int ID = 0;
     private int tileID;
-    private TextureRegion tileTexture;
+    private TextureRegion tileTextureRegion;
 
 
-    public Tile(int posX, int posY, TextureRegion tileTexture) {
-        ID += 1;
+    public Tile(int posX, int posY, TextureRegion tileTextureRegion) {
+        ID++;
         this.tileID = ID;
         this.posX = posX;
         this.posY = posY;
-        this.tileTexture = tileTexture;
+        this.tileTextureRegion = tileTextureRegion;
     }
 
     public int getPosX() {
@@ -41,15 +41,11 @@ public class Tile {
         return tileID;
     }
 
-    public void setTileID(int tileID) {
-        this.tileID = tileID;
+    public TextureRegion getTileTextureRegion() {
+        return tileTextureRegion;
     }
 
-    public TextureRegion getTileTexture() {
-        return tileTexture;
-    }
-
-    public void setTileTexture(TextureRegion tileTexture) {
-        this.tileTexture = tileTexture;
+    public void setTileTextureRegion(TextureRegion tileTextureRegion) {
+        this.tileTextureRegion = tileTextureRegion;
     }
 }
