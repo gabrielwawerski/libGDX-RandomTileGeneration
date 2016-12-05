@@ -3,7 +3,7 @@
 This README would normally document whatever steps are necessary to get your application up and running.
 
 ### What is this repository for? ###
-* Projekt gry, pisanej w Javie, we frameworku [libGDX](https://libgdx.badlogicgames.com/)
+* Projekt gry, pisanej w **Javie**, we frameworku [**libGDX**](https://libgdx.badlogicgames.com/)
 
 * Quick summary
 * Version
