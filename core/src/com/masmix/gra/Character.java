@@ -13,8 +13,6 @@ public class Character {
     private Vector2 position;
     private Vector2 defaultPosition;
 
-    private TextureRegion textureRegion;
-
 
     public Character(String name, int health) {
         this.name = name;
@@ -27,7 +25,7 @@ public class Character {
     }
     
     public Character() {
-    			this.name = "Player"
+    			this.name = "Player";
     			this.health = 100;
     }
 
@@ -77,14 +75,6 @@ public class Character {
 
     public void setDefaultPosition(Vector2 defaultPosition) {
         this.defaultPosition = defaultPosition;
-    }
-
-    public TextureRegion getTextureRegion() {
-        return textureRegion;
-    }
-
-    public void setTextureRegion(TextureRegion textureRegion) {
-        this.textureRegion = textureRegion;
     }
 
 }

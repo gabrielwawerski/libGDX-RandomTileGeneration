@@ -35,8 +35,6 @@ public class Player {
     private float walkUpAnimTime;
     private float walkDownAnimTime;
 
-    private Vector2 position;
-
 
     public Player(Character character, TextureRegion standDown,
                   TextureRegion standLeft, TextureRegion standRight,
@@ -46,7 +44,6 @@ public class Player {
                   TextureRegion walkLeft4, TextureRegion walkRight1,
                   TextureRegion walkRight2, TextureRegion walkRight3,
                   TextureRegion walkRight4) {
-        position = new Vector2();
         this.character = character;
         this.standDown = standDown;
         this.standLeft = standLeft;
@@ -63,10 +60,12 @@ public class Player {
         this.walkRight3 = walkRight3;
         this.walkRight4 = walkRight4;
 
+        this.character.setPosition(new Vector2());
+
         walkLeftAnim = new Animation(1.0f, walkLeft1, walkLeft2, walkLeft3, walkLeft4);
         walkLeftAnim.setPlayMode(Animation.PlayMode.NORMAL);
 
-        walkRightAnim = new Animation(0.55f, walkRight1, walkRight2, walkRight3, walkRight4);
+        walkRightAnim = new Animation(0.40f, walkRight1, walkRight2, walkRight3, walkRight4);
         walkRightAnim.setPlayMode(Animation.PlayMode.NORMAL);
 
         walkUpAnim = new Animation(1.0f, walkUp, standUp);
@@ -150,31 +149,32 @@ public class Player {
     }
 
     public Vector2 getPosition() {
-        return position;
+        return character.getPosition();
     }
 
     public void setPosition(float positionX, float positionY) {
-        position.set(positionX, positionY);
+        character.setPositionX(positionX);
+        character.setPositionY(positionY);
     }
 
     public float getPositionX() {
-        return  position.x;
+        return  character.getPosition().x;
     }
 
     public float getPositionY() {
-        return  position.y;
+        return  character.getPosition().y;
     }
 
     public void setPositionX(float positionX) {
-        this.position.x = positionX;
+        character.setPositionX(positionX);
     }
 
     public void setPositionY(float positionY) {
-        this.position.y = positionY;
+        character.setPositionX(positionY);
     }
 
     public void positionAdd(float x, float y) {
-        position.add(x, y);
+        character.getPosition().add(x, y);
     }
 }
 

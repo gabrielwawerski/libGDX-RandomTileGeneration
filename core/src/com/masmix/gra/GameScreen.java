@@ -24,8 +24,6 @@ public class GameScreen extends ApplicationAdapter {
     private FPSLogger fpsLogger;
     private Camera camera;
     private Viewport viewport;
-
-    private Character character;
     private Player player;
 
 
@@ -50,6 +48,7 @@ public class GameScreen extends ApplicationAdapter {
     }
 
     private void updateScene() {
+        camera.update();
         float deltaTime = Gdx.graphics.getDeltaTime();
         if (!player.getWalkRightAnim().isAnimationFinished(player.getWalkRightAnimTime())) {
             player.setWalkRightAnimTime(player.getWalkRightAnimTime() + deltaTime);
@@ -59,9 +58,8 @@ public class GameScreen extends ApplicationAdapter {
 
     private void drawScene() {
         batch.begin();
+        batch.setProjectionMatrix(camera.combined);
         batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
-
-//        System.out.println("playerPos X: " + player.getPlayerPositionX());
         batch.end();
     }
 
