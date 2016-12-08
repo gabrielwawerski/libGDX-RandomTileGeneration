@@ -10,7 +10,10 @@ public class Tile {
     private int tileID;
     private TextureRegion textureRegion;
 
-
+    /**
+     *
+     * @param textureRegion część tekstury
+     */
     public Tile(TextureRegion textureRegion) {
         ID++;
         this.tileID = ID;
