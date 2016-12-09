@@ -25,6 +25,7 @@ public class GameScreen extends ApplicationAdapter {
     private Camera camera;
     private Viewport viewport;
     private Player player;
+    private Map map;
 
 
     @Override
@@ -35,6 +36,9 @@ public class GameScreen extends ApplicationAdapter {
         viewport = new FitViewport(SCREEN_WIDTH, SCREEN_HEIGHT, camera);
         playerAtlas = new TextureAtlas("gra.pack");
         tilesAtlas = new TextureAtlas("tiles.pack");
+
+        map = new Map(new Coordinates(16, 16), new TileTexture(playerAtlas.findRegion("standDown")));
+        map.createMap();
         
         camera.position.set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
         player = new Player(new Character("MasmiX"),

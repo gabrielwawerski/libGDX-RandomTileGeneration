@@ -13,6 +13,7 @@ class TileTexture {
      * @param textureRegion tablica texture regionów wszystkich kafelków, które znajdą się na mapie, numerowane od 0.
      */
     public TileTexture(TextureRegion... textureRegion) {
+        this.textureRegion = textureRegion;
         for (int i = 0; i < textureRegion.length; i++) {
             this.textureRegion[i] = new TextureRegion(textureRegion[i]);
         }
