@@ -21,9 +21,9 @@ public class Map {
     public void createMap() {
         for (int i = 0; i < coordinates.getSizeX(); i++) {
             for (int j = 0; j < coordinates.getSizeY(); j++) {
-                rand = MathUtils.random(0, 4);
+                rand = MathUtils.random(0, tileTextures.getTextureRegionSize() - 1);
                 if (rand == 3) {
-                    rand = MathUtils.random(0, 4);
+                    rand = MathUtils.random(0, tileTextures.getTextureRegionSize() - 1);
                 }
                 tile[i][j] = new Tile(tileTextures.getTextureRegionAt(rand)); // tu rand generator
             }
