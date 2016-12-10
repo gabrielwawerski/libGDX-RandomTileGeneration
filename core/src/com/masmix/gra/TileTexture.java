@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 class TileTexture {
     private TextureRegion[] textureRegion;
 
+
     /**
      *
      * @param textureRegion tablica texture regionów wszystkich kafelków, które znajdą się na mapie, numerowane od 0.
@@ -17,6 +18,10 @@ class TileTexture {
 //        for (int i = 0; i < textureRegion.length; i++) {
 //            this.textureRegion[i] = new TextureRegion(textureRegion[i]);
 //        }
+    }
+
+    public int getTextureRegionSize() {
+        return textureRegion.length;
     }
 
     public TextureRegion getTextureRegionAt(int i) {
