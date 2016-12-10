@@ -12,7 +12,7 @@ public class Coordinates {
         this.y = new int[y];
 
         for (int i = 0; i < x; i++) {
-            this.x[i] = x;
+            this.x[i] = i;
             for (int j = 0; j < y; j++) {
                 this.y[j] = j;
             }
