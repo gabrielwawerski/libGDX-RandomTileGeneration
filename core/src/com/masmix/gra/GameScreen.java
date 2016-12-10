@@ -26,6 +26,9 @@ public class GameScreen extends ApplicationAdapter {
     private Viewport viewport;
     private Player player;
     private Map map;
+    private int mapSizeX;
+    private int mapSizeY;
+    private int scale;
 
 
     @Override
@@ -37,8 +40,12 @@ public class GameScreen extends ApplicationAdapter {
         playerAtlas = new TextureAtlas("gra.pack");
         tilesAtlas = new TextureAtlas("tiles.pack");
 
-        map = new Map(new Coordinates(16, 16), new TileTexture(playerAtlas.findRegion("standDown")));
+        map = new Map(new Coordinates(12, 10), new TileTexture(tilesAtlas.findRegion("tileBlack"),
+                tilesAtlas.findRegion("tileBlue"), tilesAtlas.findRegion("tileGreen"),
+                tilesAtlas.findRegion("tileEffect"), tilesAtlas.findRegion("tileRed")));
         map.createMap();
+        mapSizeX = map.getSizeX();
+        mapSizeY = map.getSizeY();
         
         camera.position.set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
         player = new Player(new Character("MasmiX"),
@@ -49,6 +56,8 @@ public class GameScreen extends ApplicationAdapter {
                 new TextureRegion(playerAtlas.findRegion("walkLeft3")), new TextureRegion(playerAtlas.findRegion("walkLeft4")),
                 new TextureRegion(playerAtlas.findRegion("walkRight1")), new TextureRegion(playerAtlas.findRegion("walkRight2")),
                 new TextureRegion(playerAtlas.findRegion("walkRight3")), new TextureRegion(playerAtlas.findRegion("walkRight4")));
+
+        scale = 48;
     }
 
     private void updateScene() {
@@ -62,8 +71,17 @@ public class GameScreen extends ApplicationAdapter {
 
     private void drawScene() {
         batch.begin();
+
         batch.setProjectionMatrix(camera.combined);
         batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
+
+        for (int i = 0; i < mapSizeX; i++) {
+            for (int j = 0; j < mapSizeY; j++) {
+                batch.draw(map.getTileAt(i,j).getTextureRegion(), scale * i, scale * j, scale, scale);
+
+            }
+        }
+
         batch.end();
     }
 

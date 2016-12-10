@@ -3,7 +3,7 @@ package com.masmix.gra;
 /*
  * Created by MasmiX on 09.12.2016.
  */
-class Coordinates {
+public class Coordinates {
     private int[] x;
     private int[] y;
 

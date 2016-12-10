@@ -14,12 +14,12 @@ class TileTexture {
      */
     public TileTexture(TextureRegion... textureRegion) {
         this.textureRegion = textureRegion;
-        for (int i = 0; i < textureRegion.length; i++) {
-            this.textureRegion[i] = new TextureRegion(textureRegion[i]);
-        }
+//        for (int i = 0; i < textureRegion.length; i++) {
+//            this.textureRegion[i] = new TextureRegion(textureRegion[i]);
+//        }
     }
 
-    public TextureRegion getTextureAt(int i) {
+    public TextureRegion getTextureRegionAt(int i) {
         if (!(i > textureRegion.length) || !(i < 0)) {
             return textureRegion[i];
         }

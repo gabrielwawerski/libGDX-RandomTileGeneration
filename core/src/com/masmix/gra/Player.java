@@ -177,12 +177,3 @@ public class Player {
         character.getPosition().add(x, y);
     }
 }
-
-
-//    public void setHealth(int health) {
-//        character.setHealth(health);
-//    }
-//
-//    public int getHealth() {
-//        return character.getHealth();
-//    }

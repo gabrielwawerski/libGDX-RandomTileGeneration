@@ -9,12 +9,27 @@ public class Map {
     private TileTexture tileTextures;
     private Tile[][] tile; // private Tile[][] tile
     private Coordinates coordinates;
+    private int rand;
 
 
     public Map(Coordinates coordinates, TileTexture tileTextures) {
         this.coordinates = coordinates;
         this.tileTextures = tileTextures;
+        tile = new Tile[coordinates.getSizeX()][coordinates.getSizeY()];
     }
+
+    public void createMap() {
+        for (int i = 0; i < coordinates.getSizeX(); i++) {
+            for (int j = 0; j < coordinates.getSizeY(); j++) {
+                rand = MathUtils.random(0, 4);
+                if (rand == 3) {
+                    rand = MathUtils.random(0, 4);
+                }
+                tile[i][j] = new Tile(tileTextures.getTextureRegionAt(rand)); // tu rand generator
+            }
+        }
+    }
+
 
     public Tile getTileAt(int x, int y) {
         if (!(x < 0) || !(x > tile.length))
@@ -29,15 +44,6 @@ public class Map {
 
     public int getCoordinateY(int posY) {
         return coordinates.getY(posY); // sprawdzic
-    }
-
-    public void createMap() {
-    	for (int i = 0; i < sizeX; i++) {
-    		for (int j = 0; j < sizeY; j++) {
-                tile[i][j] = new Tile(tileTextures.getTextureAt(MathUtils.random(0, 4))); // tu rand generator
-            }
-    	}
-
     }
 
     public int getSizeX() {
