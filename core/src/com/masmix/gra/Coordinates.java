@@ -27,4 +27,20 @@ class Coordinates {
     public int getY(int posY) {
         return y[posY];
     }
+    
+    public int getSizeX() {
+    	return x.length;
+    }
+    
+    public int getSizeY() {
+    	return y.length;
+    }
 }
+
+
+
+
+
+
+
+

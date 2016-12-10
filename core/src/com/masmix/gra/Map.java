@@ -8,18 +8,12 @@ import com.badlogic.gdx.math.MathUtils;
 public class Map {
     private TileTexture tileTextures;
     private Tile[][] tile; // private Tile[][] tile
-    private int sizeX;
-    private int sizeY;
-    private int[][] mapSize;
     private Coordinates coordinates;
 
 
     public Map(Coordinates coordinates, TileTexture tileTextures) {
-        mapSize = new int[sizeX][sizeY];
         this.coordinates = coordinates;
         this.tileTextures = tileTextures;
-        this.sizeX = sizeX;
-        this.sizeY = sizeY;
     }
 
     public Tile getTileAt(int x, int y) {
@@ -47,11 +41,11 @@ public class Map {
     }
 
     public int getSizeX() {
-        return sizeX;
+        return coordinates.getSizeX();
     }
 
     public int getSizeY() {
-        return sizeY;
+        return coordinates.getSizeY();
     }
 }
 
