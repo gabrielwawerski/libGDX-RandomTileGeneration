@@ -40,13 +40,13 @@ public class GameScreen extends ApplicationAdapter {
         playerAtlas = new TextureAtlas("gra.pack");
         tilesAtlas = new TextureAtlas("tiles.pack");
 
-        map = new Map(new Coordinates(12, 10), new TileTexture(tilesAtlas.findRegion("tileBlack"),
+        map = new Map(new Coordinates(14, 12), new TileTexture(tilesAtlas.findRegion("tileBlack"),
                 tilesAtlas.findRegion("tileBlue"), tilesAtlas.findRegion("tileGreen"),
                 tilesAtlas.findRegion("tileEffect"), tilesAtlas.findRegion("tileRed")));
         map.createMap();
         mapSizeX = map.getSizeX();
         mapSizeY = map.getSizeY();
-        
+        scale = 40;
         camera.position.set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
         player = new Player(new Character("MasmiX"),
                 new TextureRegion(playerAtlas.findRegion("standDown")), new TextureRegion(playerAtlas.findRegion("standLeft")),
@@ -56,8 +56,6 @@ public class GameScreen extends ApplicationAdapter {
                 new TextureRegion(playerAtlas.findRegion("walkLeft3")), new TextureRegion(playerAtlas.findRegion("walkLeft4")),
                 new TextureRegion(playerAtlas.findRegion("walkRight1")), new TextureRegion(playerAtlas.findRegion("walkRight2")),
                 new TextureRegion(playerAtlas.findRegion("walkRight3")), new TextureRegion(playerAtlas.findRegion("walkRight4")));
-
-        scale = 48;
     }
 
     private void updateScene() {
@@ -71,9 +69,7 @@ public class GameScreen extends ApplicationAdapter {
 
     private void drawScene() {
         batch.begin();
-
         batch.setProjectionMatrix(camera.combined);
-        batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
 
         for (int i = 0; i < mapSizeX; i++) {
             for (int j = 0; j < mapSizeY; j++) {
@@ -81,6 +77,8 @@ public class GameScreen extends ApplicationAdapter {
 
             }
         }
+
+        batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
 
         batch.end();
     }
