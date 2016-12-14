@@ -2,6 +2,7 @@ package com.masmix.gra;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.FPSLogger;
 import com.badlogic.gdx.graphics.GL20;
@@ -29,6 +30,11 @@ public class GameScreen extends ApplicationAdapter {
     private int mapSizeX;
     private int mapSizeY;
     private int scale;
+    private float playerMovSpeed;
+    private boolean isMovingRight;
+    private boolean isMovingLeft;
+    private boolean isMovingUp;
+    private boolean isMovingDown;
 
 
     @Override
@@ -44,10 +50,7 @@ public class GameScreen extends ApplicationAdapter {
                 tilesAtlas.findRegion("tileBlue"), tilesAtlas.findRegion("tileGreen"),
                 tilesAtlas.findRegion("tileEffect"), tilesAtlas.findRegion("tileRed")));
         map.createMap();
-        mapSizeX = map.getSizeX();
-        mapSizeY = map.getSizeY();
-        scale = 40;
-        camera.position.set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
+//        camera.position.set(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, 0);
         player = new Player(new Character("MasmiX"),
                 new TextureRegion(playerAtlas.findRegion("standDown")), new TextureRegion(playerAtlas.findRegion("standLeft")),
                 new TextureRegion(playerAtlas.findRegion("standRight")), new TextureRegion(playerAtlas.findRegion("standUp")),
@@ -56,14 +59,48 @@ public class GameScreen extends ApplicationAdapter {
                 new TextureRegion(playerAtlas.findRegion("walkLeft3")), new TextureRegion(playerAtlas.findRegion("walkLeft4")),
                 new TextureRegion(playerAtlas.findRegion("walkRight1")), new TextureRegion(playerAtlas.findRegion("walkRight2")),
                 new TextureRegion(playerAtlas.findRegion("walkRight3")), new TextureRegion(playerAtlas.findRegion("walkRight4")));
+
+        mapSizeX = map.getSizeX();
+        mapSizeY = map.getSizeY();
+        scale = 40;
+        playerMovSpeed = 2.5f;
+
+        isMovingRight = false;
+
+        isMovingUp = false;
     }
 
     private void updateScene() {
+        camera.position.set(player.getPositionX(), player.getPositionY(), 0);
         camera.update();
         float deltaTime = Gdx.graphics.getDeltaTime();
-        if (!player.getWalkRightAnim().isAnimationFinished(player.getWalkRightAnimTime())) {
-            player.setWalkRightAnimTime(player.getWalkRightAnimTime() + deltaTime);
-            player.positionAdd(50 * deltaTime, 0);
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+            if (!isMovingRight) {
+                player.setPosition(player.getPositionX() + playerMovSpeed, player.getPositionY());
+                isMovingRight = true;
+            }
+        }
+
+        if (player.getWalkRightAnim().isAnimationFinished(player.getWalkRightAnimTime()))
+            isMovingRight = false;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+            player.setPosition(player.getPositionX() - playerMovSpeed, player.getPositionY());
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+            if (!isMovingUp) {
+                player.setPosition(player.getPositionX(), player.getPositionY() + playerMovSpeed);
+                isMovingUp = true;
+            }
+        }
+
+        if (player.getWalkUpAnim().isAnimationFinished(player.getWalkUpAnimTime()))
+            isMovingUp = false;
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            player.setPosition(player.getPositionX(), player.getPositionY() - playerMovSpeed);
         }
     }
 
@@ -78,7 +115,13 @@ public class GameScreen extends ApplicationAdapter {
             }
         }
 
-        batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
+        if (isMovingRight) {
+            batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
+        }
+
+        if (isMovingUp) {
+            batch.draw(player.getWalkUpAnim().getKeyFrame(player.getWalkUpAnimTime()), player.getPositionX(), player.getPositionY());
+        }
 
         batch.end();
     }

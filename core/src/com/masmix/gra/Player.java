@@ -69,7 +69,7 @@ public class Player {
         walkRightAnim.setPlayMode(Animation.PlayMode.NORMAL);
 
         walkUpAnim = new Animation(1.0f, walkUp, standUp);
-        walkUpAnim.setPlayMode(Animation.PlayMode.NORMAL);
+        walkUpAnim.setPlayMode(Animation.PlayMode.LOOP);
 
         walkDownAnim = new Animation(1.0f, walkDown, standDown);
         walkDownAnim.setPlayMode(Animation.PlayMode.NORMAL);
@@ -88,32 +88,16 @@ public class Player {
         return walkLeftAnim;
     }
 
-    public void setWalkLeftAnim(Animation walkLeftAnim) {
-        this.walkLeftAnim = walkLeftAnim;
-    }
-
     public Animation getWalkRightAnim() {
         return walkRightAnim;
-    }
-
-    public void setWalkRightAnim(Animation walkRightAnim) {
-        this.walkRightAnim = walkRightAnim;
     }
 
     public Animation getWalkUpAnim() {
         return walkUpAnim;
     }
 
-    public void setWalkUpAnim(Animation walkUpAnim) {
-        this.walkUpAnim = walkUpAnim;
-    }
-
     public Animation getWalkDownAnim() {
         return walkDownAnim;
-    }
-
-    public void setWalkDownAnim(Animation walkDownAnim) {
-        this.walkDownAnim = walkDownAnim;
     }
 
     public float getWalkLeftAnimTime() {
@@ -170,7 +154,7 @@ public class Player {
     }
 
     public void setPositionY(float positionY) {
-        character.setPositionX(positionY);
+        character.setPositionY(positionY);
     }
 
     public void positionAdd(float x, float y) {

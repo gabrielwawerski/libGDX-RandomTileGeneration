@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.masmix.gra.forLater.Main;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
@@ -14,6 +13,6 @@ public class AndroidLauncher extends AndroidApplication {
 
 		config.useAccelerometer = false;
 		config.useCompass = true;
-		initialize(new Main(), config);
+		initialize(new GameScreen(), config);
 	}
 }

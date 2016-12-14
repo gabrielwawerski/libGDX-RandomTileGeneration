@@ -10,12 +10,16 @@ public class Map {
     private Tile[][] tile; // private Tile[][] tile
     private Coordinates coordinates;
     private int rand;
+    private int mapSizeX;
+    private int mapSizeY;
 
 
     public Map(Coordinates coordinates, TileTexture tileTextures) {
         this.coordinates = coordinates;
         this.tileTextures = tileTextures;
-        tile = new Tile[coordinates.getSizeX()][coordinates.getSizeY()];
+        this.tile = new Tile[coordinates.getSizeX()][coordinates.getSizeY()];
+        this.mapSizeX = coordinates.getSizeX() * 16;
+        this.mapSizeY = coordinates.getSizeY() * 16;
     }
 
     public void createMap() {
@@ -52,6 +56,22 @@ public class Map {
 
     public int getSizeY() {
         return coordinates.getSizeY();
+    }
+
+    public int getMapSizeX() {
+        return mapSizeX;
+    }
+
+    public void setMapSizeX(int mapSizeX) {
+        this.mapSizeX = mapSizeX;
+    }
+
+    public int getMapSizeY() {
+        return mapSizeY;
+    }
+
+    public void setMapSizeY(int mapSizeY) {
+        this.mapSizeY = mapSizeY;
     }
 }
 
