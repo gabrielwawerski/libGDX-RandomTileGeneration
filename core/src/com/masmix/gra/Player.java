@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
  */
 public class Player {
     private Character character;
+    private Vector2 origin;
 
     private TextureRegion standDown;
     private TextureRegion standLeft;
@@ -66,7 +67,7 @@ public class Player {
         walkLeftAnim.setPlayMode(Animation.PlayMode.NORMAL);
 
         walkRightAnim = new Animation(0.40f, walkRight1, walkRight2, walkRight3, walkRight4);
-        walkRightAnim.setPlayMode(Animation.PlayMode.NORMAL);
+        walkRightAnim.setPlayMode(Animation.PlayMode.LOOP);
 
         walkUpAnim = new Animation(1.0f, walkUp, standUp);
         walkUpAnim.setPlayMode(Animation.PlayMode.LOOP);
@@ -78,6 +79,8 @@ public class Player {
         walkRightAnimTime = 0;
         walkUpAnimTime = 0;
         walkDownAnimTime = 0;
+        origin = new Vector2();
+        origin.set(0, 0);
     }
 
     public Character getCharacter() {
@@ -159,5 +162,14 @@ public class Player {
 
     public void positionAdd(float x, float y) {
         character.getPosition().add(x, y);
+    }
+
+    public Vector2 getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(float x, float y) {
+        this.origin.x = x;
+        this.origin.y = y;
     }
 }
