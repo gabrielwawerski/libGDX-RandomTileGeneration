@@ -31,6 +31,7 @@ public class GameScreen extends ApplicationAdapter {
     private int mapSizeY;
     private int scale;
     private float playerMovSpeed;
+
     private boolean isMovingRight;
     private boolean isMovingLeft;
     private boolean isMovingUp;
@@ -63,11 +64,8 @@ public class GameScreen extends ApplicationAdapter {
         mapSizeX = map.getSizeX();
         mapSizeY = map.getSizeY();
         scale = 40;
-        playerMovSpeed = 2.5f;
-
-        isMovingRight = false;
-
-        isMovingUp = false;
+        playerMovSpeed = 1.5f;
+        player.setPosition(0, 0);
     }
 
     private void updateScene() {
@@ -75,31 +73,39 @@ public class GameScreen extends ApplicationAdapter {
         camera.update();
         float deltaTime = Gdx.graphics.getDeltaTime();
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-            if (!isMovingRight) {
-                player.setPosition(player.getPositionX() + playerMovSpeed, player.getPositionY());
-                isMovingRight = true;
-            }
+        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
+            isMovingLeft = false;
+            isMovingUp = false;
+            isMovingDown = false;
+
+            isMovingRight = true;
+            player.setPosition(player.getPositionX() + playerMovSpeed, player.getPositionY());
         }
 
-        if (player.getWalkRightAnim().isAnimationFinished(player.getWalkRightAnimTime()))
+        if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             isMovingRight = false;
+            isMovingUp = false;
+            isMovingDown = false;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+            isMovingLeft = true;
             player.setPosition(player.getPositionX() - playerMovSpeed, player.getPositionY());
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
-            if (!isMovingUp) {
-                player.setPosition(player.getPositionX(), player.getPositionY() + playerMovSpeed);
-                isMovingUp = true;
-            }
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
+            isMovingRight = false;
+            isMovingLeft = false;
+            isMovingDown = false;
+
+            isMovingUp = true;
+            player.setPosition(player.getPositionX(), player.getPositionY() + playerMovSpeed);
         }
 
-        if (player.getWalkUpAnim().isAnimationFinished(player.getWalkUpAnimTime()))
+        if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            isMovingRight = false;
+            isMovingLeft = false;
             isMovingUp = false;
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+            isMovingDown = true;
             player.setPosition(player.getPositionX(), player.getPositionY() - playerMovSpeed);
         }
     }
@@ -119,8 +125,16 @@ public class GameScreen extends ApplicationAdapter {
             batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
         }
 
+        if (isMovingLeft) {
+            batch.draw(player.getWalkLeftAnim().getKeyFrame(player.getWalkLeftAnimTime()), player.getPositionX(), player.getPositionY());
+        }
+
         if (isMovingUp) {
             batch.draw(player.getWalkUpAnim().getKeyFrame(player.getWalkUpAnimTime()), player.getPositionX(), player.getPositionY());
+        }
+
+        if (isMovingDown) {
+            batch.draw(player.getWalkDownAnim().getKeyFrame(player.getWalkDownAnimTime()), player.getPositionX(), player.getPositionY());
         }
 
         batch.end();
