@@ -36,7 +36,7 @@ public class Map {
 
 
     public Tile getTileAt(int x, int y) {
-        if (!(x < 0) || !(x > tile.length))
+        if (!(x < 0) && !(x > tile.length))
             return tile[x][y];
         else
             throw new IndexOutOfBoundsException();
