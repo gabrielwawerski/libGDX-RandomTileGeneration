@@ -114,12 +114,9 @@ public class GameScreen extends ApplicationAdapter {
         batch.begin();
         batch.setProjectionMatrix(camera.combined);
 
-        for (int i = 0; i < mapSizeX; i++) {
-            for (int j = 0; j < mapSizeY; j++) {
-                batch.draw(map.getTileAt(i,j).getTextureRegion(), scale * i, scale * j, scale, scale);
-
-            }
-        }
+        drawMap();
+        if (Gdx.input.isKeyJustPressed(Input.Keys.F1))
+            drawMap();
 
         if (isMovingRight) {
             batch.draw(player.getWalkRightAnim().getKeyFrame(player.getWalkRightAnimTime()), player.getPositionX(), player.getPositionY());
@@ -160,5 +157,13 @@ public class GameScreen extends ApplicationAdapter {
         batch.dispose();
         playerAtlas.dispose();
         tilesAtlas.dispose();
+    }
+
+    private void drawMap() {
+        for (int i = 0; i < mapSizeX; i++) {
+            for (int j = 0; j < mapSizeY; j++) {
+                batch.draw(map.getTileAt(i,j).getTextureRegion(), scale * i, scale * j, scale, scale);
+            }
+        }
     }
 }
