@@ -47,7 +47,7 @@ public class GameScreen extends ApplicationAdapter {
         playerAtlas = new TextureAtlas("gra.pack");
         tilesAtlas = new TextureAtlas("tiles.pack");
 
-        map = new Map(new Coordinates(14, 12), new TileTexture(tilesAtlas.findRegion("tileBlack"),
+        map = new Map(new MapSize(14, 12), new TileTexture(tilesAtlas.findRegion("tileBlack"),
                 tilesAtlas.findRegion("tileBlue"), tilesAtlas.findRegion("tileGreen"),
                 tilesAtlas.findRegion("tileEffect"), tilesAtlas.findRegion("tileRed")));
         map.createMap();

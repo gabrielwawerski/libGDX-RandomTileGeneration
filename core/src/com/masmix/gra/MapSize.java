@@ -3,11 +3,11 @@ package com.masmix.gra;
 /*
  * Created by MasmiX on 09.12.2016.
  */
-public class Coordinates {
+public class MapSize {
     private int[] x;
     private int[] y;
 
-    public Coordinates(int x, int y) {
+    public MapSize(int x, int y) {
         this.x = new int[x];
         this.y = new int[y];
 

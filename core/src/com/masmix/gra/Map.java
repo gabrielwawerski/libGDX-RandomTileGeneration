@@ -8,23 +8,23 @@ import com.badlogic.gdx.math.MathUtils;
 public class Map {
     private TileTexture tileTextures;
     private Tile[][] tile; // private Tile[][] tile
-    private Coordinates coordinates;
+    private MapSize mapSize;
     private int rand;
     private int mapSizeX;
     private int mapSizeY;
 
 
-    public Map(Coordinates coordinates, TileTexture tileTextures) {
-        this.coordinates = coordinates;
+    public Map(MapSize mapSize, TileTexture tileTextures) {
+        this.mapSize = mapSize;
         this.tileTextures = tileTextures;
-        this.tile = new Tile[coordinates.getSizeX()][coordinates.getSizeY()];
-        this.mapSizeX = coordinates.getSizeX() * 16;
-        this.mapSizeY = coordinates.getSizeY() * 16;
+        this.tile = new Tile[mapSize.getSizeX()][mapSize.getSizeY()];
+        this.mapSizeX = mapSize.getSizeX() * 16;
+        this.mapSizeY = mapSize.getSizeY() * 16;
     }
 
     public void createMap() {
-        for (int i = 0; i < coordinates.getSizeX(); i++) {
-            for (int j = 0; j < coordinates.getSizeY(); j++) {
+        for (int i = 0; i < mapSize.getSizeX(); i++) {
+            for (int j = 0; j < mapSize.getSizeY(); j++) {
                 rand = MathUtils.random(0, tileTextures.getTextureRegionSize() - 1);
                 if (rand == 3) {
                     rand = MathUtils.random(0, tileTextures.getTextureRegionSize() - 1);
@@ -43,19 +43,19 @@ public class Map {
     }
 
     public int getCoordinateX(int posX) {
-        return coordinates.getX(posX);
+        return mapSize.getX(posX);
     }
 
     public int getCoordinateY(int posY) {
-        return coordinates.getY(posY); // sprawdzic
+        return mapSize.getY(posY); // sprawdzic
     }
 
     public int getSizeX() {
-        return coordinates.getSizeX();
+        return mapSize.getSizeX();
     }
 
     public int getSizeY() {
-        return coordinates.getSizeY();
+        return mapSize.getSizeY();
     }
 
     public int getMapSizeX() {
